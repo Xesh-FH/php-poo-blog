@@ -10,3 +10,10 @@ function render(string $path, array $variables = [])
 
     require('templates/layout.html.php');
 }
+
+
+function redirect(string $url): void
+{
+    header("Location: $url");
+    exit();
+}
