@@ -8,6 +8,7 @@
  */
 
 require_once('libraries/database.php');
+require_once('libraries/utils.php');
 
 /**
  * 1. Connexion à la base de données avec PDO
@@ -25,12 +26,16 @@ $resultats = $pdo->query('SELECT * FROM articles ORDER BY created_at DESC');
 // On fouille le résultat pour en extraire les données réelles
 $articles = $resultats->fetchAll();
 
+
 /**
  * 3. Affichage
  */
-$pageTitle = "Accueil";
-ob_start();
-require('templates/articles/index.html.php');
-$pageContent = ob_get_clean();
 
-require('templates/layout.html.php');
+// compact('pageTitle', 'articles') fait la même chose que créer le tableau associatif suivant :
+// [
+//    'pageTitle' => $pageTitle,
+//    'articles'  => $articles
+// ]
+//    /!\==  Il faut que les variables avec des noms identiques aux strings passées en param de compact() existent dans le fichier  ==/!\
+$pageTitle = "Accueil";
+render('articles/index', compact('pageTitle', 'articles'));
