@@ -41,7 +41,8 @@ function findAllArticles(): array
  * On va ici utiliser une requête préparée car elle inclue une variable qui provient de l'utilisateur :
  * Ne faites jamais confiance à ce connard d'utilisateur ! :D
  * 
- * @param
+ * @param integer $id
+ * Retourne un array ou false
  */
 function findArticle(int $id)
 {
@@ -60,6 +61,8 @@ function findArticle(int $id)
 /**
  * Récupération des commentaires de l'article en question
  * Pareil, toujours une requête préparée pour sécuriser la donnée filée par l'utilisateur (cet enfoiré en puissance !)
+ * @param integer $article_id
+ * @return array
  */
 function findAllComments(int $article_id): array
 {
@@ -71,7 +74,9 @@ function findAllComments(int $article_id): array
 }
 
 /**
- * 
+ * Trouver un commentaire par son id
+ * @param integer $id
+ * Retourne un tableau ou false
  */
 function findComment(int $id)
 {
@@ -82,6 +87,11 @@ function findComment(int $id)
     return $comment;
 }
 
+/**
+ * Suppréssion d'un commentaire
+ * @param integer $id
+ * @return void
+ */
 function deleteComment(int $id): void
 {
     $pdo = getPdo();
@@ -91,6 +101,10 @@ function deleteComment(int $id): void
 
 /**
  * Insertion du commentaire
+ * @param string $author
+ * @param string $content
+ * @param integer $article_id
+ * @return void
  */
 function insertComment(string $author, string $content, int $article_id): void
 {
@@ -101,6 +115,8 @@ function insertComment(string $author, string $content, int $article_id): void
 
 /**
  * Réelle suppression de l'article
+ * @param integer $id
+ * @return void
  */
 function deleteArticle(int $id): void
 {
