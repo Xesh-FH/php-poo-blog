@@ -4,6 +4,8 @@ require_once('libraries/models/Model.php');
 
 class Comment extends Model
 {
+    protected string $table = "comments";
+
     /**
      * Récupération des commentaires de l'article en question
      * Pareil, toujours une requête préparée pour sécuriser la donnée filée par l'utilisateur (cet enfoiré en puissance !)
@@ -16,30 +18,6 @@ class Comment extends Model
         $query->execute(['article_id' => $article_id]);
         $commentaires = $query->fetchAll();
         return $commentaires;
-    }
-
-    /**
-     * Trouver un commentaire par son id
-     * @param integer $id
-     * Retourne un tableau ou false
-     */
-    public function find(int $id)
-    {
-        $query = $this->pdo->prepare('SELECT * FROM comments WHERE id = :id');
-        $query->execute(['id' => $id]);
-        $comment = $query->fetch();
-        return $comment;
-    }
-
-    /**
-     * Suppréssion d'un commentaire
-     * @param integer $id
-     * @return void
-     */
-    public function delete(int $id): void
-    {
-        $query = $this->pdo->prepare('DELETE FROM comments WHERE id = :id');
-        $query->execute(['id' => $id]);
     }
 
     /**
