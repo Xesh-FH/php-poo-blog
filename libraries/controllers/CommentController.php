@@ -55,7 +55,7 @@ class CommentController extends AbstractController
         $this->commentModel->insert($author, $content, $article_id);
 
         // 4. Redirection vers l'article en question :
-        \Http::redirect('article.php?id=' . $article_id);
+        \Http::redirect('index.php?controller=article&task=show&id=' . $article_id);
     }
 
     /**
@@ -92,6 +92,6 @@ class CommentController extends AbstractController
         /**
          * 5. Redirection vers l'article en question
          */
-        \Http::redirect('article.php?id=' . $article_id);
+        \Http::redirect('index.php?controller=article&task=show&id=' . $article_id);
     }
 }
