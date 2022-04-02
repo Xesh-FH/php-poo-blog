@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
-
 class CommentController extends AbstractController
 {
     /**
@@ -57,7 +55,7 @@ class CommentController extends AbstractController
         $this->commentModel->insert($author, $content, $article_id);
 
         // 4. Redirection vers l'article en question :
-        redirect('article.php?id=' . $article_id);
+        \Http::redirect('article.php?id=' . $article_id);
     }
 
     /**
@@ -94,6 +92,6 @@ class CommentController extends AbstractController
         /**
          * 5. Redirection vers l'article en question
          */
-        redirect('article.php?id=' . $article_id);
+        \Http::redirect('article.php?id=' . $article_id);
     }
 }

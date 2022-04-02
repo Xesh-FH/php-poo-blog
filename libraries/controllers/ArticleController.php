@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-require_once('libraries/utils.php');
-
 class ArticleController extends AbstractController
 {
     /**
@@ -25,7 +23,7 @@ class ArticleController extends AbstractController
         // ]
         //    /!\==  Il faut que les variables avec des noms identiques aux strings passées en param de compact() existent dans le fichier  ==/!\
         $pageTitle = "Accueil";
-        render('articles/index', compact('pageTitle', 'articles'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles'));
     }
 
     /**
@@ -58,7 +56,7 @@ class ArticleController extends AbstractController
          */
         $pageTitle = $article['title'];
 
-        render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
+        \Renderer::render('articles/show', compact('pageTitle', 'article', 'commentaires', 'article_id'));
     }
 
     /**
@@ -90,6 +88,6 @@ class ArticleController extends AbstractController
         /**
          * 5. Redirection vers la page d'accueil
          */
-        redirect('index.php');
+        \Http::redirect('index.php');
     }
 }
