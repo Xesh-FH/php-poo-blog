@@ -2,8 +2,6 @@
 
 namespace Models;
 
-require_once('libraries/models/Model.php');
-
 class Comment extends Model
 {
     protected string $table = "comments";

@@ -1,5 +1,7 @@
 <?php
 
+require_once('libraries/autoload.php');
+
 /**
  * CE FICHIER A POUR BUT D'AFFICHER LA PAGE D'ACCUEIL !
  * 
@@ -7,6 +9,5 @@
  * puis on va boucler dessus pour afficher chacun d'entre eux
  */
 
-require_once('libraries/controllers/Article.php');
-$controller = new \Controllers\Article();
+$controller = new \Controllers\ArticleController();
 $controller->index();

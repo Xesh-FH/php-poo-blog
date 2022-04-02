@@ -1,5 +1,7 @@
 <?php
 
+require_once('libraries/autoload.php');
+
 /**
  * CE FICHIER DOIT ENREGISTRER UN NOUVEAU COMMENTAIRE EST REDIRIGER SUR L'ARTICLE !
  * 
@@ -13,6 +15,6 @@
  * 
  * Et enfin on pourra rediriger l'utilisateur vers l'article en question
  */
-require_once('libraries/controllers/Comment.php');
-$controller = new \Controllers\Comment();
+
+$controller = new \Controllers\CommentController();
 $controller->insert();

@@ -1,5 +1,7 @@
 <?php
 
+require_once('libraries/autoload.php');
+
 /**
  * CE FICHIER DOIT AFFICHER UN ARTICLE ET SES COMMENTAIRES !
  * 
@@ -10,6 +12,6 @@
  * 
  * On va ensuite afficher l'article puis ses commentaires
  */
-require_once('libraries/controllers/Article.php');
-$controller = new \Controllers\Article();
+
+$controller = new \Controllers\ArticleController();
 $controller->show();

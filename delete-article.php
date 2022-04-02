@@ -1,5 +1,6 @@
 <?php
-require_once('libraries/controllers/Article.php');
 
-$controller = new \Controllers\Article();
+require_once('libraries/autoload.php');
+
+$controller = new \Controllers\ArticleController();
 $controller->delete();
